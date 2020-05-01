@@ -15,9 +15,15 @@ class LinkedList:
     Add, Remove, Find and Enumerate.
     """
     def __init__(self):
-        self.head = None    # The first node in the list or None if empty
-        self.tail = None    # The last node in the list or None if empty
+        self._head = None    # The first node in the list or None if empty
+        self._tail = None    # The last node in the list or None if empty
         self._count = 0
+
+    def head(self) -> LinkedListNode:
+        return self._head
+
+    def tail(self) -> LinkedListNode:
+        return self._tail
 
     def add_first(self, node: LinkedListNode):
         """Adds the specified node to the start of the list.
@@ -25,10 +31,10 @@ class LinkedList:
         :param node: The node to add
         """
         # Save the head node so we don't lose the reference
-        old_head = self.head
+        old_head = self._head
 
         # Point head to the new node
-        self.head = node
+        self._head = node
 
         # Insert the rest of the list behind the head
         node.next = old_head
@@ -36,7 +42,7 @@ class LinkedList:
         if self._count == 0:
             # If the list was empty, head and tail should both
             # point to the new node.
-            self.tail = self.head
+            self._tail = self._head
 
         self._count += 1
 
@@ -46,11 +52,11 @@ class LinkedList:
         :param node: The node to add
         """
         if self._count == 0:
-            self.head = node
+            self._head = node
         else:
-            self.tail.next = node
+            self._tail.next = node
 
-        self.tail = node
+        self._tail = node
         self._count += 1
 
     def add(self, value):
@@ -69,24 +75,24 @@ class LinkedList:
 
     def remove_first(self):
         if self._count != 0:
-            self.head = self.head.next
+            self._head = self._head.next
             self._count -= 1
 
             if self._count == 0:
-                self.tail = None
+                self._tail = None
 
     def remove_last(self):
         if self._count != 0:
             if self._count == 1:
-                self.head = None
-                self.tail = None
+                self._head = None
+                self._tail = None
             else:
-                current: LinkedListNode = self.head
-                while current.next is not self.tail:
+                current: LinkedListNode = self._head
+                while current.next is not self._tail:
                     current = current.next
 
                 current.next = None
-                self.tail = current
+                self._tail = current
 
             self._count -= 1
 
@@ -98,7 +104,7 @@ class LinkedList:
         :return: True if the value was found and removed, False otherwise.
         """
         previous = None
-        current = self.head
+        current = self._head
 
         # Cases:
         # 1: Empty list -> do nothing
@@ -114,7 +120,7 @@ class LinkedList:
                 else:
                     previous.next = current.next    # Case 3b or 3c
                     if current.next is None:        # Case 3c
-                        self.tail = previous
+                        self._tail = previous
 
                     self._count -= 1
 
@@ -131,8 +137,8 @@ class LinkedList:
 
     def clear(self):
         """Remove all the nodes from the list."""
-        self.head = None
-        self.tail = None
+        self._head = None
+        self._tail = None
         self._count = 0
 
     # def count(self) -> int:
@@ -147,7 +153,7 @@ class LinkedList:
         :return: Return number of occurrences of the value.
         """
         value_count = 0
-        current = self.head
+        current = self._head
 
         while current is not None:
             if current.value == value:
@@ -162,7 +168,7 @@ class LinkedList:
         :param value: The item to search
         :return: True if the item is found, False otherwise.
         """
-        current = self.head
+        current = self._head
 
         while current is not None:
             if current.value == value:
@@ -176,7 +182,7 @@ class LinkedList:
 
         :return: A head to tail enumerator.
         """
-        current: LinkedListNode = self.head
+        current: LinkedListNode = self._head
         while current is not None:
             yield current.value
             current = current.next
