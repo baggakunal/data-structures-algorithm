@@ -1,5 +1,4 @@
-from ..data_structures.linked_list import LinkedList, LinkedListNode
-from ..data_structures.node import print_nodes
+from ..data_structures.doubly_linked_list import LinkedList, LinkedListNode
 
 
 def main():
@@ -10,7 +9,8 @@ def main():
     linked_list.add_last(LinkedListNode(9))
     linked_list.add_last(LinkedListNode(10))
     linked_list.add_first(LinkedListNode(1))
-    print_nodes(linked_list.head)
+    for value in linked_list.enumerate():
+        print(value)
     print('\n')
 
     linked_list.remove_first()

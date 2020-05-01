@@ -2,14 +2,16 @@ from .node import Node
 
 
 class LinkedListNode(Node):
-    """A node in the linked list."""
+    """A node in the singly linked list."""
 
     def __init__(self, value):
+        """Constructs a new node with the specified value."""
         super().__init__(value)
+        self.next = None    # The next node in the list (None if last node).
 
 
 class LinkedList:
-    """A linked list collection capable of basic operations such as
+    """A singly linked list collection capable of basic operations such as
     Add, Remove, Find and Enumerate.
     """
     def __init__(self):
@@ -31,12 +33,12 @@ class LinkedList:
         # Insert the rest of the list behind the head
         node.next = old_head
 
-        self._count += 1
-
-        if self._count == 1:
+        if self._count == 0:
             # If the list was empty, head and tail should both
             # point to the new node.
-            self.tail = node
+            self.tail = self.head
+
+        self._count += 1
 
     def add_last(self, node: LinkedListNode):
         """Adds the specified node to the end of the list.
@@ -89,7 +91,7 @@ class LinkedList:
             self._count -= 1
 
     def remove(self, value) -> bool:
-        """Remove the first occurrence of the value from the linked list
+        """Remove the first occurrence of the value from the list
         (searching from Head to Tail).
 
         :param value: The value to remove.
