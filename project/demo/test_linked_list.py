@@ -1,5 +1,5 @@
-from project.data_structures.linked_list import LinkedList, LinkedListNode
-from project.data_structures.node import print_nodes
+from ..data_structures.linked_list import LinkedList, LinkedListNode
+from ..data_structures.node import print_nodes
 
 
 def main():
