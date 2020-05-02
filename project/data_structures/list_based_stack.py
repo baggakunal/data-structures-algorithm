@@ -1,5 +1,5 @@
 class Stack:
-    """A Last In First Out (LIFO) collection implemented as a linked list."""
+    """A Last In First Out (LIFO) collection implemented using list."""
     def __init__(self):
         self._list = list()
 
