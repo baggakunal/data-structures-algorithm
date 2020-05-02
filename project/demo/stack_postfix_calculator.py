@@ -1,6 +1,6 @@
 import sys
 from typing import List
-from ..data_structures.array_stack import Stack
+from ..data_structures.list_based_stack import Stack
 
 
 # def _calculate(lhs: float, rhs: float, operator) -> float:

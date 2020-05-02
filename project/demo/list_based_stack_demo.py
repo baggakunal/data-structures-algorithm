@@ -1,4 +1,4 @@
-from ..data_structures.array_stack import Stack
+from ..data_structures.list_based_stack import Stack
 
 
 def main():

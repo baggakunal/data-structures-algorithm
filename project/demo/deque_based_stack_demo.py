@@ -1,4 +1,4 @@
-from ..data_structures.linked_list_stack import Stack
+from ..data_structures.deque_based_stack import Stack
 
 
 def main():
