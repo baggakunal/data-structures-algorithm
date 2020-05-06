@@ -60,7 +60,7 @@ class BinaryTree:
 
     def _add_to(self, node: BinaryTreeNode, value: int):
         """Recursion add algorithm."""
-        if node.compare_to_value(value) < 0:
+        if node.compare_to_value(value) > 0:
             # Case 1: value is less than the current node value.
             if node.left is None:
                 # If there is no left child, make this the new left.
