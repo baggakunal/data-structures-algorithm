@@ -1,4 +1,4 @@
-from project.data_structures.deque_based_queue import Queue
+from project.data_structures.queue_using_linked_list import Queue
 
 
 def main():

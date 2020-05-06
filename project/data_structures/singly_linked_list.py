@@ -1,12 +1,9 @@
-from .node import Node
-
-
-class LinkedListNode(Node):
+class LinkedListNode:
     """A node in the singly linked list."""
 
     def __init__(self, value):
         """Constructs a new node with the specified value."""
-        super().__init__(value)
+        self.value = value  # The value of the node.
         self.next = None    # The next node in the list (None if last node).
 
 
