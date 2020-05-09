@@ -3,7 +3,7 @@ from collections import deque
 
 class BinaryTreeNode:
     """A binary tree node class - encapsulates the value and left/right pointers."""
-    def __init__(self, value: int):
+    def __init__(self, value):
         self._value = value
         self.left = None
         self.right = None
@@ -24,7 +24,7 @@ class BinaryTreeNode:
         else:
             return -1
 
-    def compare_to_value(self, value: int) -> int:
+    def compare_to_value(self, value) -> int:
         """Compares the current node to the provided value.
 
         :param value: The value to compare to.
@@ -44,7 +44,7 @@ class BinaryTree:
         self._count = 0
 
     # region Add
-    def add(self, value: int):
+    def add(self, value):
         """Adds the provided value to the binary tree.
 
         :param value: Value to add to the tree.
@@ -58,7 +58,7 @@ class BinaryTree:
 
         self._count += 1
 
-    def _add_to(self, node: BinaryTreeNode, value: int):
+    def _add_to(self, node: BinaryTreeNode, value):
         """Recursion add algorithm."""
         if node.compare_to_value(value) > 0:
             # Case 1: value is less than the current node value.
@@ -76,7 +76,7 @@ class BinaryTree:
                 self._add_to(node.right, value)
     # endregion
 
-    def contains(self, value: int) -> bool:
+    def contains(self, value) -> bool:
         """Determines if the specified value exists in the binary tree.
 
         :param value: The value to search for.
@@ -85,7 +85,7 @@ class BinaryTree:
         node, parent = self._find_with_parent(value)
         return node is not None
 
-    def _find_with_parent(self, value: int) -> (BinaryTreeNode, BinaryTreeNode):
+    def _find_with_parent(self, value) -> (BinaryTreeNode, BinaryTreeNode):
         """Finds and returns the first node containing containing the specified value.
         If the value is not found, returns None.
         Also returns the parent of the found node (or None), which is used in Remove.
@@ -115,7 +115,7 @@ class BinaryTree:
 
     # region Remove
 
-    def remove(self, value: int):
+    def remove(self, value):
         """Removes the first occurrence of the specified value from the tree.
 
         :param value: The param to remove.
