@@ -1,6 +1,7 @@
 from __future__ import annotations
 from collections import deque
 
+
 class BinaryTreeNode:
     """A binary tree node class - encapsulates the value and left/right pointers."""
     def __init__(self, value):
