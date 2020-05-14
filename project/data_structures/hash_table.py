@@ -50,7 +50,7 @@ class HashTableArrayNode:
         """
         if self._items is None:
             # Lazy init the linked list
-            self._items = deque[HashTableNodePair]()
+            self._items = deque()
         else:
             # Multiple items might collide and exist in this list - but each
             # key should only be once in the list once.
@@ -153,7 +153,7 @@ class HashTableArray:
         :param key: The key to be mapped.
         :return: array index.
         """
-        return int(fabs(hash(key)))
+        return int(fabs(hash(key) % 1000))
 
     def add(self, key: TKey, value: TValue):
         """Adds the key/value pair to the node.
