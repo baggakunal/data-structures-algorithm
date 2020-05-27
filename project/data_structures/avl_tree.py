@@ -86,7 +86,7 @@ class AVLTreeNode:
             return -1
 
     # region Balancing Methods
-    def _balance(self):
+    def balance(self):
         tree_state = self._state
 
         if tree_state == TreeState.RightHeavy:
@@ -210,6 +210,8 @@ class AVLTree:
                 node.right = AVLTreeNode(value, node, self)
             else:
                 self._add_to(node.right, value)
+
+        node.balance()
     # endregion
 
     def contains(self, value: TNode) -> bool:
@@ -319,6 +321,11 @@ class AVLTree:
                     # If parent value is less than or equal to current value,
                     # make leftmost the right child of parent.
                     parent.right = left_most
+
+            if parent:
+                parent.balance()
+            elif self.head:
+                self.head.balance()
 
         self._count -= 1
         return True

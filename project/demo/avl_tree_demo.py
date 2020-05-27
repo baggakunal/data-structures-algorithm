@@ -4,7 +4,7 @@ from random import randint
 
 def generate_binary_tree() -> AVLTree:
     tree = AVLTree()
-    [tree.add(randint(0, 200)) for num in range(0, 50)]
+    [tree.add(randint(0, 200)) for num in range(0, 150)]
     return tree
 
 

@@ -9,6 +9,7 @@ class BinaryTreeNode:
         self.left = None
         self.right = None
 
+    @property
     def value(self):
         return self._value
 
@@ -18,9 +19,9 @@ class BinaryTreeNode:
         :param other: The node value to compare to.
         :return: 1 if the instance value is greater than provided value, -1 if less or 0 if equal.
         """
-        if self._value == other.value():
+        if self._value == other.value:
             return 0
-        elif self._value > other.value():
+        elif self._value > other.value:
             return 1
         else:
             return -1
@@ -43,6 +44,10 @@ class BinaryTree:
     def __init__(self):
         self._head = None
         self._count = 0
+
+    @property
+    def head(self):
+        return self._head
 
     # region Add
     def add(self, value):
@@ -196,7 +201,7 @@ class BinaryTree:
 
     def _pre_order_traversal(self, action, node: BinaryTreeNode):
         if node is not None:
-            action(node.value())
+            action(node.value)
             self._pre_order_traversal(action, node.left)
             self._pre_order_traversal(action, node.right)
     # endregion
@@ -210,7 +215,7 @@ class BinaryTree:
         if node is not None:
             self._post_order_traversal(action, node.left)
             self._post_order_traversal(action, node.right)
-            action(node.value())
+            action(node.value)
     # endregion
 
     # region In-Order Traversal
@@ -221,7 +226,7 @@ class BinaryTree:
     def _in_order_traversal(self, action, node: BinaryTreeNode):
         if node is not None:
             self._in_order_traversal(action, node.left)
-            action(node.value())
+            action(node.value)
             self._in_order_traversal(action, node.right)
 
     def enumerate_in_order_traversal(self):
@@ -255,7 +260,7 @@ class BinaryTree:
                         current = current.left
 
                 # In-order is left -> yield -> right
-                yield current.value()
+                yield current.value
 
                 # If we can go right then do so.
                 if current.right:
